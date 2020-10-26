@@ -33,3 +33,9 @@ input[type="button"] {
 td {
     width: 9em;
 }
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
