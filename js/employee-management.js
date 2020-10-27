@@ -56,6 +56,20 @@ function buildTable(data) {
 }
 
 
+function updateEmployee() {
+    "use strict";
+    var name = $("name").value;
+    var title = $("title").value;
+    var extension = $("extension").value;
+
+    for (var employee in employees) {
+
+    }
+
+
+}
+
+
 var addEmployee = function() {
     "use strict";
     var header = "",
@@ -98,11 +112,6 @@ var addEmployee = function() {
 
 };
 
-var loadEmployees = function() {
-    "use strict";
-    var header, html, name, title, extension;
-
-};
 
 var deleteEmployee = function() {
     "use strict";
