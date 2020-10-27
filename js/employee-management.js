@@ -15,7 +15,21 @@ var $ = function(id) {
     return window.document.getElementById(id);
 };
 
+
+function countEmployees(data) {
+    "use strict";
+    var count = 0;
+    for (var i = 0; i < data.length; i++) {
+
+        count++;
+    }
+    return count;
+}
+
+
+
 function buildTable(data) {
+    "use strict";
     var table = document.createElement("table");
     table.className = "gridtable";
     var thead = document.createElement("thead");
@@ -32,7 +46,7 @@ function buildTable(data) {
         var tr = document.createElement("tr");
         for (var o in el) {
             var td = document.createElement("td");
-            td.appendChild(document.createTextNode(el[o]))
+            td.appendChild(document.createTextNode(el[o]));
             tr.appendChild(td);
         }
         tbody.appendChild(tr);
@@ -98,10 +112,10 @@ var deleteEmployee = function() {
 window.addEventListener("load", function() {
     "use strict";
     $("submit").addEventListener("click", addEmployee);
-    display();
-
 });
 
 window.onload = function() {
     document.getElementById("content").appendChild(buildTable(employees));
-}
+    var numEmployees = countEmployees(employees);
+    document.getElementById("showing").innerHTML = 'Showing ' + numEmployees + ' Employees';
+};
