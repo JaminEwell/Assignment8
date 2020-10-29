@@ -49,7 +49,10 @@ function buildTable(data) {
             var td = document.createElement("td");
             td.appendChild(document.createTextNode(el[o]));
             tr.appendChild(td);
+
         }
+        var cell = tr.insertCell(-1);
+        cell.innerHTML = "<button id='delete'>Delete</button>";
         tbody.appendChild(tr);
     });
     table.appendChild(tbody);
@@ -68,9 +71,12 @@ function updateEmployee() {
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
     cell1.innerHTML = name;
     cell2.innerHTML = title;
     cell3.innerHTML = extension;
+    cell4.innerHTML = "<button id='delete'>Delete</button>";
+
 
     //var tbodyNode = document.createElement("tbody");
     //tableNode.appendChild(tbodyNode);
@@ -127,6 +133,8 @@ var addEmployee = function() {
 
 var deleteEmployee = function() {
     "use strict";
+    var tbody = document.getElementById("employeeBody");
+    tbody.deleteRow(-1);
 };
 
 
@@ -134,6 +142,9 @@ window.addEventListener("load", function() {
     "use strict";
     $("submit").addEventListener("click", updateEmployee);
 });
+
+//$("delete").add("click", deleteEmployee);
+//};
 
 window.onload = function() {
     document.getElementById("content").appendChild(buildTable(employees));
