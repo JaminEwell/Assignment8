@@ -31,9 +31,10 @@ function countEmployees(data) {
 function buildTable(data) {
     "use strict";
     var table = document.createElement("table");
-    table.className = "gridtable";
+    table.className = "employees";
     var thead = document.createElement("thead");
     var tbody = document.createElement("tbody");
+    tbody.id = "employeeBody";
     var headRow = document.createElement("tr");
     ["Name", "Title", "Extension", "Remove"].forEach(function(el) {
         var th = document.createElement("th");
@@ -58,13 +59,23 @@ function buildTable(data) {
 
 function updateEmployee() {
     "use strict";
+    var table = document.getElementsByClassName("employees");
+    var tbody = document.getElementById("employeeBody");
     var name = $("name").value;
     var title = $("title").value;
     var extension = $("extension").value;
+    var row = tbody.insertRow();
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    cell1.innerHTML = name;
+    cell2.innerHTML = title;
+    cell3.innerHTML = extension;
 
-    for (var employee in employees) {
+    //var tbodyNode = document.createElement("tbody");
+    //tableNode.appendChild(tbodyNode);
 
-    }
+
 
 
 }
@@ -72,6 +83,7 @@ function updateEmployee() {
 
 var addEmployee = function() {
     "use strict";
+
     var header = "",
         html = "",
         required,
@@ -120,7 +132,7 @@ var deleteEmployee = function() {
 
 window.addEventListener("load", function() {
     "use strict";
-    $("submit").addEventListener("click", addEmployee);
+    $("submit").addEventListener("click", updateEmployee);
 });
 
 window.onload = function() {
